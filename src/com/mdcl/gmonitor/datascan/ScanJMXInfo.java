@@ -30,11 +30,11 @@ import org.quartz.JobExecutionException;
  *
  */
 public class ScanJMXInfo  implements Job{
-	public  String cluster_id = "";
-	public  String cluster_locators = "";
-	public  String summary_Items = "";
-	public  String locator_Items = "";
-	public  String cacheServer_Items = "";
+	private  String cluster_id = "";
+	private  String cluster_locators = "";
+	private  String summary_Items = "";
+	private  String locator_Items = "";
+	private  String cacheServer_Items = "";
 	
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -45,8 +45,6 @@ public class ScanJMXInfo  implements Job{
 		summary_Items = String.valueOf(context.getJobDetail().getJobDataMap().get("summary_Items"));
 		locator_Items = String.valueOf(context.getJobDetail().getJobDataMap().get("locator_Items"));
 		cacheServer_Items = String.valueOf(context.getJobDetail().getJobDataMap().get("cacheServer_Items"));
-		
-		System.out.println("cluster_id==="+cluster_id);
 		
 		List<Map> rsList = new ArrayList<Map>();
 		
@@ -103,7 +101,6 @@ public class ScanJMXInfo  implements Job{
     		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
     		System.out.println("开始收集集群：【 "+cluster_id+" 】监控数据："+sdf.format(new Date()));
             System.out.println(rsList);		
-        	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
         }else{
         	System.out.println("Exception: 链接不上集群【 "+cluster_id+" 】的Locator");
         }
