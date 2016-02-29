@@ -35,7 +35,6 @@ public class GetProps {
         return _instance;
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
 	private GetProps(){
         PropertyResourceBundle configBundle = (PropertyResourceBundle)PropertyResourceBundle.getBundle(configFilePath);
         
@@ -43,7 +42,7 @@ public class GetProps {
         List<HashMap<String,String>> tmpList = new ArrayList<HashMap<String,String>>();
         if(cluster_Name_arr != null){
         	for(String prefix:cluster_Name_arr){
-        		HashMap tmpMap = new HashMap();
+        		HashMap<String,String> tmpMap = new HashMap<String,String>();
         		String scheduler = configBundle.getString(prefix+"_Scheduler");
         		String cluster_locators = configBundle.getString(prefix+"_Cluster_Locators");
                 String summary_Items = configBundle.getString(prefix+"_Summary_Items");
