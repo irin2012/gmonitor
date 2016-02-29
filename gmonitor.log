@@ -1,0 +1,18 @@
+2016-02-29 18:59:07 [main][org.quartz.simpl.SimpleThreadPool]-[INFO] Job execution threads will use class loader of thread: main
+2016-02-29 18:59:07 [main][org.quartz.core.QuartzScheduler]-[INFO] Quartz Scheduler v.1.6.0 created.
+2016-02-29 18:59:07 [main][org.quartz.simpl.RAMJobStore]-[INFO] RAMJobStore initialized.
+2016-02-29 18:59:07 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2016-02-29 18:59:07 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler version: 1.6.0
+2016-02-29 18:59:07 [main][org.quartz.core.QuartzScheduler]-[INFO] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2016-02-29 18:59:07 [main][org.quartz.core.QuartzScheduler]-[INFO] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2016-02-29 19:00:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile', class=com.mdcl.gmonitor.datascan.ScanJMXInfo
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-1][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile
+2016-02-29 19:00:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Person_Paramter', class=com.mdcl.gmonitor.datascan.ScanJMXInfo
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-2][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Person_Paramter
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-1][com.mdcl.gmonitor.datascan.ScanJMXInfo]-[INFO] 开始收集集群：【 Dept3_Person_Mobile 】监控数据：2016-02-29 19:00:00 536
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-1][com.mdcl.gmonitor.datascan.ScanJMXInfo]-[INFO] [{GarbageCollectionCount=203, cluster_id=Dept3_Person_Mobile, NumClients=0, TotalHeapSize=735, type=summary}, {JVMPauses=15, cluster_id=Dept3_Person_Mobile, CpuUsage=5.552367E-4, FreeHeapSize=325, type=cacheserver}, {PutsRate=0.0, cluster_id=Dept3_Person_Mobile, GarbageCollectionTime=1310, TotalBucketCount=0, type=locator}]
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.datascan.ScanJMXInfo]-[INFO] 开始收集集群：【 Dept3_Person_Paramter 】监控数据：2016-02-29 19:00:00 536
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.datascan.ScanJMXInfo]-[INFO] [{GarbageCollectionCount=203, cluster_id=Dept3_Person_Paramter, NumClients=0, TotalHeapSize=735, type=summary}, {JVMPauses=15, cluster_id=Dept3_Person_Paramter, CpuUsage=0.0, FreeHeapSize=325, type=cacheserver}, {PutsRate=0.0, cluster_id=Dept3_Person_Paramter, GarbageCollectionTime=1310, TotalBucketCount=0, type=locator}]
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.utils.DBManager]-[INFO] Connected to MySQL 5.6.27
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-02-29 19:00:00 数据保存成功!
+2016-02-29 19:00:00 [DefaultQuartzScheduler_Worker-1][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-02-29 19:00:00 数据保存成功!

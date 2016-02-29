@@ -16,17 +16,14 @@ public class GetProps {
 
 	private static GetProps _instance;
 	private static String configFilePath = "items";
-	@SuppressWarnings("rawtypes")
-	private List<HashMap> clusters_list;
+	private List<HashMap<String,String>> clusters_list;
 	
 
-	@SuppressWarnings("rawtypes")
-	public List<HashMap> getClusters_list() {
+	public List<HashMap<String,String>> getClusters_list() {
 		return clusters_list;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public void setClusters_list(List<HashMap> clusters_list) {
+	public void setClusters_list(List<HashMap<String,String>> clusters_list) {
 		this.clusters_list = clusters_list;
 	}
 
@@ -43,7 +40,7 @@ public class GetProps {
         PropertyResourceBundle configBundle = (PropertyResourceBundle)PropertyResourceBundle.getBundle(configFilePath);
         
         String[] cluster_Name_arr = configBundle.getString("Cluster_Name").split(",");
-        List<HashMap> tmpList = new ArrayList<HashMap>();
+        List<HashMap<String,String>> tmpList = new ArrayList<HashMap<String,String>>();
         if(cluster_Name_arr != null){
         	for(String prefix:cluster_Name_arr){
         		HashMap tmpMap = new HashMap();
