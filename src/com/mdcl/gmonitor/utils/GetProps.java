@@ -45,8 +45,7 @@ public class GetProps {
         String[] cluster_Name_arr = configBundle.getString("Cluster_Name").split(",");
         List<HashMap> tmpList = new ArrayList<HashMap>();
         if(cluster_Name_arr != null){
-        	for(int i = 0;i < cluster_Name_arr.length;i++){
-        		String prefix = cluster_Name_arr[i];
+        	for(String prefix:cluster_Name_arr){
         		HashMap tmpMap = new HashMap();
         		String scheduler = configBundle.getString(prefix+"_Scheduler");
         		String cluster_locators = configBundle.getString(prefix+"_Cluster_Locators");

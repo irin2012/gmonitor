@@ -20,9 +20,13 @@ import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+
+import com.mdcl.gmonitor.output.ResultTransformerOutputWriter;
 
 
 /**
@@ -30,12 +34,13 @@ import org.quartz.JobExecutionException;
  *
  */
 public class ScanJMXInfo  implements Job{
+	private static final Log log = LogFactory.getLog(ScanJMXInfo.class);
 	private  String cluster_id = "";
 	private  String cluster_locators = "";
 	private  String summary_Items = "";
 	private  String locator_Items = "";
 	private  String cacheServer_Items = "";
-	
+	private  String output = "";
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -45,65 +50,79 @@ public class ScanJMXInfo  implements Job{
 		summary_Items = String.valueOf(context.getJobDetail().getJobDataMap().get("summary_Items"));
 		locator_Items = String.valueOf(context.getJobDetail().getJobDataMap().get("locator_Items"));
 		cacheServer_Items = String.valueOf(context.getJobDetail().getJobDataMap().get("cacheServer_Items"));
+		output = String.valueOf(context.getJobDetail().getJobDataMap().get("output"));
 		
-		List<Map> rsList = new ArrayList<Map>();
-		
+		List<Map<String,String>> rsList = new ArrayList<Map<String,String>>();
 		JMXConnector connector = null;
-        connector = getJMXServiceURL(cluster_id);
-        
-        if(connector != null){
-            MBeanServerConnection mbsc = null;
-    		try {
-    			mbsc = connector.getMBeanServerConnection();
-    		} catch (IOException e) {
-    			e.printStackTrace();
-    		}
-             
-            Set MBeanset = null;
-    		try {
-    			MBeanset = mbsc.queryMBeans(null, null);
-    		} catch (IOException e) {
-    			e.printStackTrace();
-    		}
-            Iterator MBeansetIterator = MBeanset.iterator();
-            
-            List<String> objList = new ArrayList<String>();
-            while (MBeansetIterator.hasNext()) { 
-                ObjectInstance objectInstance = (ObjectInstance)MBeansetIterator.next();
-                ObjectName objectName = objectInstance.getObjectName();
-                String canonicalName = objectName.getCanonicalName();
-                if(canonicalName.indexOf("GemFire") != -1)
-                	objList.add(canonicalName);
-            }
-            
-            for(int i= 0; i < objList.size(); i++){
-            	String objName = objList.get(i);
-            	if(objName.indexOf("type=Distributed") != -1){
-            		Map<String, String> tmpMap = null;
-    				try {
-    					tmpMap = getMonitorInfo(mbsc,objName,"summary",cluster_id);
-    				} catch (Exception e) {
-    					e.printStackTrace();
-    				}
-            		if( tmpMap!=null  && !tmpMap.isEmpty())
-            			rsList.add(tmpMap);
-            	}else if(objName.indexOf("type=Member") != -1 && objName.indexOf("service=") == -1){
-            		Map<String, String> tmpMap = null;
-    				try {
-    					tmpMap = getMonitorInfo(mbsc,objName,"member",cluster_id);
-    				} catch (Exception e) {
-    					e.printStackTrace();
-    				}
-            		if( tmpMap!=null  && !tmpMap.isEmpty())
-            			rsList.add(tmpMap);
-            	}
-            }
-    		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
-    		System.out.println("开始收集集群：【 "+cluster_id+" 】监控数据："+sdf.format(new Date()));
-            System.out.println(rsList);		
-        }else{
-        	System.out.println("Exception: 链接不上集群【 "+cluster_id+" 】的Locator");
-        }
+		
+		try{
+	        connector = getJMXConnector(cluster_id);
+	        
+	        if(connector != null){
+	            MBeanServerConnection mbsc = null;
+	    		try {
+	    			mbsc = connector.getMBeanServerConnection();
+	    		} catch (IOException e) {
+	    			e.printStackTrace();
+	    		}
+	             
+	            Set MBeanset = null;
+	    		try {
+	    			MBeanset = mbsc.queryMBeans(null, null);
+	    		} catch (IOException e) {
+	    			e.printStackTrace();
+	    		}
+	            Iterator MBeansetIterator = MBeanset.iterator();
+	            
+	            List<String> objList = new ArrayList<String>();
+	            while (MBeansetIterator.hasNext()) { 
+	                ObjectInstance objectInstance = (ObjectInstance)MBeansetIterator.next();
+	                ObjectName objectName = objectInstance.getObjectName();
+	                String canonicalName = objectName.getCanonicalName();
+	                if(canonicalName.indexOf("GemFire") != -1)
+	                	objList.add(canonicalName);
+	            }
+	            
+	            for(String objName: objList){
+	            	if(objName.indexOf("type=Distributed") != -1){
+	            		Map<String, String> tmpMap = null;
+	    				try {
+	    					tmpMap = getMonitorInfo(mbsc,objName,"summary",cluster_id);
+	    				} catch (Exception e) {
+	    					e.printStackTrace();
+	    				}
+	            		if( tmpMap!=null  && !tmpMap.isEmpty())
+	            			rsList.add(tmpMap);
+	            	}else if(objName.indexOf("type=Member") != -1 && objName.indexOf("service=") == -1){
+	            		Map<String, String> tmpMap = null;
+	    				try {
+	    					tmpMap = getMonitorInfo(mbsc,objName,"member",cluster_id);
+	    				} catch (Exception e) {
+	    					e.printStackTrace();
+	    				}
+	            		if( tmpMap!=null  && !tmpMap.isEmpty())
+	            			rsList.add(tmpMap);
+	            	}
+	            }
+	    		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
+	    		log.info("开始收集集群：【 "+cluster_id+" 】监控数据："+sdf.format(new Date()));
+	            log.info(rsList);		
+	            ResultTransformerOutputWriter outwriter = (ResultTransformerOutputWriter) Class.forName(output).newInstance();
+	            outwriter.doWrite(rsList);
+	        }else{
+	        	log.error("Exception: 链接不上集群【 "+cluster_id+" 】的Locator");
+	        }
+		} catch (Exception e) {
+		      e.printStackTrace();
+	    } finally {
+	      try {
+	        if (connector != null) {
+	        	connector.close();
+	        }
+	      } catch (IOException e) {
+	        e.printStackTrace();
+	      }
+	    }
 	}
 	
 	/**
@@ -114,7 +133,7 @@ public class ScanJMXInfo  implements Job{
 	 * @return
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public JMXConnector getJMXServiceURL(String cluster_id){
+	public JMXConnector getJMXConnector(String cluster_id){
 		String cluster_locator_str = cluster_locators;
 		JMXServiceURL serviceURL = null;
 		JMXConnector connector = null;
@@ -126,8 +145,8 @@ public class ScanJMXInfo  implements Job{
         //map.put("jmx.remote.credentials", credentials);
         
 		if(locatorsArr != null){
-			for(int i = 0; i < locatorsArr.length; i++){
-				jmxURL = "service:jmx:rmi:///jndi/rmi://"+locatorsArr[i]+"/jmxrmi";
+			for(String locator:locatorsArr ){
+				jmxURL = "service:jmx:rmi:///jndi/rmi://"+locator+"/jmxrmi";
 				try {
 					serviceURL = new JMXServiceURL(jmxURL);
 					connector = JMXConnectorFactory.connect(serviceURL, map);
@@ -196,8 +215,8 @@ public class ScanJMXInfo  implements Job{
 		
 		String[] itemsArr = items.split(",");
 		if(itemsArr != null){
-			for(int i = 0; i < itemsArr.length; i++){
-				rsMap.put(itemsArr[i], String.valueOf(mbsc.getAttribute(runtimeObjName, itemsArr[i])));
+			for(String item:itemsArr){
+				rsMap.put(item, String.valueOf(mbsc.getAttribute(runtimeObjName, item)));
 			}
 		}
 		

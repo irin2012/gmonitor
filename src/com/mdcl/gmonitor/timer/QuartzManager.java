@@ -35,7 +35,7 @@ public class QuartzManager {
 	 */
 	
 	@SuppressWarnings("rawtypes")
-	public static void addJob(String jobName, String jobClass, HashMap cluster_info) {
+	public static void addJob(String jobName, String jobClass, HashMap cluster_info,String output) {
 		try {
 			Scheduler sched = gSchedulerFactory.getScheduler();
 			JobDetail jobDetail = new JobDetail(jobName, JOB_GROUP_NAME, Class.forName(jobClass));// 任务名，任务组，任务执行类
@@ -45,6 +45,7 @@ public class QuartzManager {
 			jobDetail.getJobDataMap().put("summary_Items", cluster_info.get("summary_Items"));
 			jobDetail.getJobDataMap().put("locator_Items", cluster_info.get("locator_Items"));
 			jobDetail.getJobDataMap().put("cacheServer_Items", cluster_info.get("cacheServer_Items"));
+			jobDetail.getJobDataMap().put("output", output);
 			
 			// 触发器
 			CronTrigger trigger = new CronTrigger(jobName, TRIGGER_GROUP_NAME);// 触发器名,触发器组
@@ -84,7 +85,7 @@ public class QuartzManager {
 	 */
 	@SuppressWarnings("rawtypes")
 	public static void addJob(String jobName, String jobGroupName,
-			String triggerName, String triggerGroupName, String jobClass, HashMap cluster_info){
+			String triggerName, String triggerGroupName, String jobClass, HashMap cluster_info,String output){
 		try {
 			Scheduler sched = gSchedulerFactory.getScheduler();
 			JobDetail jobDetail = new JobDetail(jobName, jobGroupName, Class.forName(jobClass));// 任务名，任务组，任务执行类
@@ -94,7 +95,7 @@ public class QuartzManager {
 			jobDetail.getJobDataMap().put("summary_Items", cluster_info.get("summary_Items"));
 			jobDetail.getJobDataMap().put("locator_Items", cluster_info.get("locator_Items"));
 			jobDetail.getJobDataMap().put("cacheServer_Items", cluster_info.get("cacheServer_Items"));
-			
+			jobDetail.getJobDataMap().put("output", output);
 			
 			// 触发器
 			CronTrigger trigger = new CronTrigger(triggerName, triggerGroupName);// 触发器名,触发器组
@@ -116,7 +117,7 @@ public class QuartzManager {
 	 * 			监控集群参数信息，动态传递给任务
 	 */
 	@SuppressWarnings("rawtypes")
-	public static void modifyJobTime(String jobName, HashMap cluster_info) {
+	public static void modifyJobTime(String jobName, HashMap cluster_info,String outpout) {
 		try {
 			Scheduler sched = gSchedulerFactory.getScheduler();
 			CronTrigger trigger = (CronTrigger) sched.getTrigger(jobName, TRIGGER_GROUP_NAME);
@@ -130,7 +131,7 @@ public class QuartzManager {
 				String jobClass = objJobClass.getName();
 				removeJob(jobName);
 
-				addJob(jobName, jobClass, cluster_info);
+				addJob(jobName, jobClass, cluster_info,outpout);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
