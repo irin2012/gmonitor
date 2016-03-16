@@ -93,6 +93,15 @@ public class JMXDataCollector implements Job{
 		}
 	}
 
+	/**
+	 * 采集JMX数据
+	 * 
+	 * @param mbsc	jmx链接上下文
+	 * @param item_define	监控指标配置文件标识，后续将指标存储在数据库需要修改
+	 * @param cluster_id	集群标识，后续将指标存储在数据库需要修改
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Map<String, String>> getJMXData(MBeanServerConnection mbsc, String item_define,String cluster_id)
 			throws Exception {
 		List<Map<String, String>> rsList = new ArrayList<Map<String, String>>();

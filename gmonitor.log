@@ -9342,3 +9342,11 @@
 2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.utils.DBManager]-[INFO] Connected to MySQL 5.6.27
 2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-1][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 22:03:00.776 数据保存成功!
 2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 22:03:00.771 数据保存成功!
+2016-03-16 22:04:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Parameter', class=com.mdcl.gmonitor.datascan.JMXDataCollector
+2016-03-16 22:04:00 [DefaultQuartzScheduler_Worker-3][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Parameter
+2016-03-16 22:04:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile', class=com.mdcl.gmonitor.datascan.JMXDataCollector
+2016-03-16 22:04:00 [DefaultQuartzScheduler_Worker-4][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile
+2016-03-16 22:04:00 [DefaultQuartzScheduler_Worker-3][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Parameter 】监控数据：2016-03-16 22:04:00 155
+2016-03-16 22:04:00 [DefaultQuartzScheduler_Worker-4][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Person_Mobile 】监控数据：2016-03-16 22:04:00 177
+2016-03-16 22:04:00 [DefaultQuartzScheduler_Worker-3][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 22:04:00.158 数据保存成功!
+2016-03-16 22:04:00 [DefaultQuartzScheduler_Worker-4][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 22:04:00.181 数据保存成功!
