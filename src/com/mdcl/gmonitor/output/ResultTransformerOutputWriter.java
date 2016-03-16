@@ -11,5 +11,5 @@ import java.util.Map;
  *
  */
 public interface ResultTransformerOutputWriter {
-	void doWrite(List<Map<String,String>> results) throws Exception;
+	void doWrite(List<List<Map<String, String>>> results) throws Exception;
 }

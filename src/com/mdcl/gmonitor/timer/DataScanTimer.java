@@ -3,8 +3,7 @@
  */
 package com.mdcl.gmonitor.timer;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 import com.mdcl.gmonitor.utils.GetProps;
 
@@ -14,11 +13,12 @@ import com.mdcl.gmonitor.utils.GetProps;
  */
 public class DataScanTimer {
 	public static void main(String[] args){
-		List<HashMap<String,String>> clusters_list = GetProps.getInstance().getClusters_list();
-		if(clusters_list != null && !clusters_list.isEmpty()){
-			for(HashMap<String,String> cluster_info_map:clusters_list){
-				QuartzManager.addJob(String.valueOf(cluster_info_map.get("cluster_id")),
-						"com.mdcl.gmonitor.datascan.ScanJMXInfo",cluster_info_map,"com.mdcl.gmonitor.output.impl.MysqlOutWriter");  
+		String[] clusters_list = GetProps.getInstance().getCluster_Name_arr();
+		Map<String,String> item_map = GetProps.getInstance().getItems_map();
+		if(clusters_list != null && clusters_list.length>0){
+			for(String cluster_info_map:clusters_list){
+				QuartzManager.addJob(cluster_info_map,
+						"com.mdcl.gmonitor.datascan.JMXDataCollector",item_map,"com.mdcl.gmonitor.output.impl.MysqlOutWriter");  
 			}
 		}
 	}
