@@ -39,14 +39,14 @@ public class QuartzManager {
 		try {
 			Scheduler sched = gSchedulerFactory.getScheduler();
 			JobDetail jobDetail = new JobDetail(jobName, JOB_GROUP_NAME, Class.forName(jobClass));// 任务名，任务组，任务执行类
-			jobDetail.getJobDataMap().put("cluster_id", item_map.get("cluster_id"));
-			jobDetail.getJobDataMap().put("scheduler", item_map.get("scheduler"));
-			jobDetail.getJobDataMap().put("cluster_locators", item_map.get("cluster_locators"));
+			String cluster_id = item_map.get(jobName+"_cluster_id");
+			jobDetail.getJobDataMap().put("cluster_id", cluster_id);
+			jobDetail.getJobDataMap().put("scheduler", item_map.get(cluster_id+"_scheduler"));
+			jobDetail.getJobDataMap().put("cluster_locators", item_map.get(cluster_id+"_cluster_locators"));
 			jobDetail.getJobDataMap().put("output", output);
-			
 			// 触发器
 			CronTrigger trigger = new CronTrigger(jobName, TRIGGER_GROUP_NAME);// 触发器名,触发器组
-			trigger.setCronExpression(String.valueOf(item_map.get("scheduler")));// 触发器时间设定
+			trigger.setCronExpression(String.valueOf(item_map.get(cluster_id+"_scheduler")));// 触发器时间设定
 			sched.scheduleJob(jobDetail, trigger);
 			// 启动
 			if (!sched.isShutdown()){
@@ -81,18 +81,19 @@ public class QuartzManager {
 	 * 			监控集群参数信息，动态传递给任务
 	 */
 	public static void addJob(String jobName, String jobGroupName,
-			String triggerName, String triggerGroupName, String jobClass, HashMap<String,String> cluster_info,String output){
+			String triggerName, String triggerGroupName, String jobClass, HashMap<String,String> item_map,String output){
 		try {
 			Scheduler sched = gSchedulerFactory.getScheduler();
 			JobDetail jobDetail = new JobDetail(jobName, jobGroupName, Class.forName(jobClass));// 任务名，任务组，任务执行类
-			jobDetail.getJobDataMap().put("cluster_id", cluster_info.get("cluster_id"));
-			jobDetail.getJobDataMap().put("scheduler", cluster_info.get("scheduler"));
-			jobDetail.getJobDataMap().put("cluster_locators", cluster_info.get("cluster_locators"));
+			String cluster_id = item_map.get(jobName+"_cluster_id");
+			jobDetail.getJobDataMap().put("cluster_id", cluster_id);
+			jobDetail.getJobDataMap().put("scheduler", item_map.get(cluster_id+"_scheduler"));
+			jobDetail.getJobDataMap().put("cluster_locators", item_map.get(cluster_id+"_cluster_locators"));
 			jobDetail.getJobDataMap().put("output", output);
 			
 			// 触发器
 			CronTrigger trigger = new CronTrigger(triggerName, triggerGroupName);// 触发器名,触发器组
-			trigger.setCronExpression(String.valueOf(cluster_info.get("scheduler")));// 触发器时间设定
+			trigger.setCronExpression(String.valueOf(cluster_id+"_scheduler"));// 触发器时间设定
 			sched.scheduleJob(jobDetail, trigger);
 		} catch (Exception e) {
 			e.printStackTrace();

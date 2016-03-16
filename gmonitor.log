@@ -9295,3 +9295,50 @@
 2016-03-16 20:59:00 [DefaultQuartzScheduler_Worker-4][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Parameter 】监控数据：2016-03-16 20:59:00 344
 2016-03-16 20:59:00 [DefaultQuartzScheduler_Worker-4][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 20:59:00.35 数据保存成功!
 2016-03-16 20:59:00 [DefaultQuartzScheduler_Worker-3][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 20:59:00.344 数据保存成功!
+2016-03-16 21:00:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Parameter', class=com.mdcl.gmonitor.datascan.JMXDataCollector
+2016-03-16 21:00:00 [DefaultQuartzScheduler_Worker-5][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Parameter
+2016-03-16 21:00:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile', class=com.mdcl.gmonitor.datascan.JMXDataCollector
+2016-03-16 21:00:00 [DefaultQuartzScheduler_Worker-6][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile
+2016-03-16 21:00:00 [DefaultQuartzScheduler_Worker-5][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Parameter 】监控数据：2016-03-16 21:00:00 131
+2016-03-16 21:00:00 [DefaultQuartzScheduler_Worker-6][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Parameter 】监控数据：2016-03-16 21:00:00 147
+2016-03-16 21:00:00 [DefaultQuartzScheduler_Worker-6][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 21:00:00.15 数据保存成功!
+2016-03-16 21:00:00 [DefaultQuartzScheduler_Worker-5][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 21:00:00.133 数据保存成功!
+2016-03-16 21:01:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Parameter', class=com.mdcl.gmonitor.datascan.JMXDataCollector
+2016-03-16 21:01:00 [DefaultQuartzScheduler_Worker-7][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Parameter
+2016-03-16 21:01:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile', class=com.mdcl.gmonitor.datascan.JMXDataCollector
+2016-03-16 21:01:00 [DefaultQuartzScheduler_Worker-8][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile
+2016-03-16 21:01:00 [DefaultQuartzScheduler_Worker-8][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Parameter 】监控数据：2016-03-16 21:01:00 225
+2016-03-16 21:01:00 [DefaultQuartzScheduler_Worker-7][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Parameter 】监控数据：2016-03-16 21:01:00 226
+2016-03-16 21:01:00 [DefaultQuartzScheduler_Worker-8][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 21:01:00.226 数据保存成功!
+2016-03-16 21:01:00 [DefaultQuartzScheduler_Worker-7][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 21:01:00.227 数据保存成功!
+2016-03-16 21:56:48 [main][org.quartz.simpl.SimpleThreadPool]-[INFO] Job execution threads will use class loader of thread: main
+2016-03-16 21:56:48 [main][org.quartz.core.QuartzScheduler]-[INFO] Quartz Scheduler v.1.6.0 created.
+2016-03-16 21:56:48 [main][org.quartz.simpl.RAMJobStore]-[INFO] RAMJobStore initialized.
+2016-03-16 21:56:48 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2016-03-16 21:56:48 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler version: 1.6.0
+2016-03-16 21:58:25 [main][org.quartz.simpl.SimpleThreadPool]-[INFO] Job execution threads will use class loader of thread: main
+2016-03-16 21:58:25 [main][org.quartz.core.QuartzScheduler]-[INFO] Quartz Scheduler v.1.6.0 created.
+2016-03-16 21:58:25 [main][org.quartz.simpl.RAMJobStore]-[INFO] RAMJobStore initialized.
+2016-03-16 21:58:25 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2016-03-16 21:58:25 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler version: 1.6.0
+2016-03-16 21:59:47 [main][org.quartz.simpl.SimpleThreadPool]-[INFO] Job execution threads will use class loader of thread: main
+2016-03-16 21:59:47 [main][org.quartz.core.QuartzScheduler]-[INFO] Quartz Scheduler v.1.6.0 created.
+2016-03-16 21:59:47 [main][org.quartz.simpl.RAMJobStore]-[INFO] RAMJobStore initialized.
+2016-03-16 21:59:47 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2016-03-16 21:59:47 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler version: 1.6.0
+2016-03-16 22:02:09 [main][org.quartz.simpl.SimpleThreadPool]-[INFO] Job execution threads will use class loader of thread: main
+2016-03-16 22:02:09 [main][org.quartz.core.QuartzScheduler]-[INFO] Quartz Scheduler v.1.6.0 created.
+2016-03-16 22:02:09 [main][org.quartz.simpl.RAMJobStore]-[INFO] RAMJobStore initialized.
+2016-03-16 22:02:09 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2016-03-16 22:02:09 [main][org.quartz.impl.StdSchedulerFactory]-[INFO] Quartz scheduler version: 1.6.0
+2016-03-16 22:02:09 [main][org.quartz.core.QuartzScheduler]-[INFO] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2016-03-16 22:02:09 [main][org.quartz.core.QuartzScheduler]-[INFO] Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2016-03-16 22:03:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Parameter', class=com.mdcl.gmonitor.datascan.JMXDataCollector
+2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-1][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Parameter
+2016-03-16 22:03:00 [DefaultQuartzScheduler_QuartzSchedulerThread][org.quartz.simpl.SimpleJobFactory]-[DEBUG] Producing instance of Job 'GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile', class=com.mdcl.gmonitor.datascan.JMXDataCollector
+2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-2][org.quartz.core.JobRunShell]-[DEBUG] Calling execute on job GMONIOTR_JOBGROUP_NAME.Dept3_Person_Mobile
+2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Person_Mobile 】监控数据：2016-03-16 22:03:00 358
+2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-1][com.mdcl.gmonitor.datascan.JMXDataCollector]-[INFO] 开始收集集群：【 Dept3_Parameter 】监控数据：2016-03-16 22:03:00 371
+2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.utils.DBManager]-[INFO] Connected to MySQL 5.6.27
+2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-1][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 22:03:00.776 数据保存成功!
+2016-03-16 22:03:00 [DefaultQuartzScheduler_Worker-2][com.mdcl.gmonitor.output.impl.MysqlOutWriter]-[INFO] 2016-03-16 22:03:00.771 数据保存成功!

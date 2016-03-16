@@ -53,9 +53,9 @@ public class GetProps {
         		items_map.put(prefix+"_OBJECT_NAME_SYSTEM_DISTRIBUTED", configBundle.getString(prefix+"_OBJECT_NAME_SYSTEM_DISTRIBUTED"));
         		items_map.put(prefix+"_OBJECT_NAME_REGION_DISTRIBUTED", configBundle.getString(prefix+"_OBJECT_NAME_REGION_DISTRIBUTED"));
         		items_map.put(prefix+"_OBJECT_NAME_CACHESERVER", configBundle.getString(prefix+"_OBJECT_NAME_CACHESERVER"));
-        		items_map.put("cluster_id", prefix);
-        		items_map.put("scheduler", configBundle.getString(prefix+"_Scheduler"));
-        		items_map.put("cluster_locators", configBundle.getString(prefix+"_Cluster_Locators"));
+        		items_map.put(prefix+"_cluster_id", prefix);
+        		items_map.put(prefix+"_scheduler", configBundle.getString(prefix+"_Scheduler"));
+        		items_map.put(prefix+"_cluster_locators", configBundle.getString(prefix+"_Cluster_Locators"));
         	}
         }
     }
